@@ -68,13 +68,7 @@ namespace student_game.backend
                     };
                 });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-            });
+            services.AddCors();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -92,11 +86,15 @@ namespace student_game.backend
                 app.UseHsts();
             }
 
-            app.UseCors("CorsPolicy");
+            app.UseCors(builder => builder.WithOrigins("http://localhost:8080")
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseAuthentication();
             
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

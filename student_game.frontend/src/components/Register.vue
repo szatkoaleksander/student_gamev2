@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <form
-      id="app"
+      id="register"
       v-on:submit.prevent="registerForm(email, nick, password)"
     >
       <div class="form-group">
