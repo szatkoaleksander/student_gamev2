@@ -1,6 +1,9 @@
 <template>
   <div class="login">
-    <form>
+    <form
+      id="app"
+      v-on:submit.prevent="loginForm(email, password)"
+    >
       <div class="form-group">
         <label for="email">Adres email</label>
         <input
@@ -25,16 +28,31 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Login',
   props: {
   },
-  data() {
+
+  data () {
     return {
       email: null,
       password: null
     }
   },
+
+  loginForm: function (email, password) {
+    axios.post('http://localhost:5000/api/account/login', {
+      email: email,
+      password: password
+    })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
 }
 </script>
 

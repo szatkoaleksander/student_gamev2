@@ -2,7 +2,27 @@ body {
     background-color: aquamarine;
 }
 
-.rejestracja, .logowanie {
+#main {
+    height: 100%;
+}
+
+#container {
+    height: 50%;
+    width: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#nav-tabContent {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#list-tab,.form-group {
     width: 50%;
     margin: 0 auto;
 }

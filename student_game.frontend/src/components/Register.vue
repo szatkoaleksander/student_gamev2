@@ -43,7 +43,7 @@
 import axios from 'axios'
 
 export default {
-  data() {
+  data () {
     return {
       email: null,
       nick: null,
@@ -58,12 +58,12 @@ export default {
         username: nick,
         password: password
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
