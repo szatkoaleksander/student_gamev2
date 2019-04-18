@@ -44,15 +44,16 @@ export default {
   },
   methods: {
     loginForm: function (email, password) {
+      this.$router.push({name: 'Dashboard'})
       axios.post('http://localhost:5000/api/account/login', {
         email: email,
         password: password
       })
         .then(function (response) {
           //this.$router.push({name: 'Dashboard'})
-          
         })
         .catch(function (error) {
+          
           console.log(error)
         })
     }
