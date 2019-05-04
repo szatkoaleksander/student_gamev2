@@ -37,6 +37,8 @@ namespace student_game.backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ITournamentService, TournamentService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IJwtToken, JwtToken>();
 
             services.AddDbContext<AppDbContext>(options =>
