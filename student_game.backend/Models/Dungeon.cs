@@ -18,7 +18,7 @@ namespace student_game.backend.Models
 
         public Dungeon()
         {
-            //Id = Guid.NewGuid();
+            Id = Guid.NewGuid();
         }
     }
 }

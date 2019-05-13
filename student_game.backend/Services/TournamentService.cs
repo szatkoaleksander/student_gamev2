@@ -31,7 +31,6 @@ namespace student_game.backend.Services
                 user.Money += 100;
 
                 await _userService.LevelUpAsync(user, 1);
-                await _userService.UpdateAsync(user);
 
                 return result;
             }
@@ -40,7 +39,9 @@ namespace student_game.backend.Services
                 return result;
             }
             else 
+            {
                 throw new Exception("Tournament error");
+            }
         }
 
         private int FightWith(AppUser user, Enemy en)
