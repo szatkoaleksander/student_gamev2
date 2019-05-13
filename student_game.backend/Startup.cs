@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using student_game.backend.Database;
 using student_game.backend.Models;
 using student_game.backend.Security;
@@ -37,6 +38,9 @@ namespace student_game.backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ITournamentService, TournamentService>();
+            services.AddScoped<IDungeonService, DungeonService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IJwtToken, JwtToken>();
 
             services.AddDbContext<AppDbContext>(options =>
@@ -70,7 +74,9 @@ namespace student_game.backend
 
             services.AddCors();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(x => x.SerializerSettings.Formatting = Formatting.Indented)
+                .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

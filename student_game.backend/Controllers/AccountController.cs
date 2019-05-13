@@ -11,10 +11,12 @@ namespace student_game.backend.Controllers
     public class AccountController : BaseController
     {
         private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IUserService userService)
         {
             _accountService = accountService;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -22,7 +24,9 @@ namespace student_game.backend.Controllers
         [Route("[action]")]
         public async Task<IActionResult> Me()
         {
-            return Ok(LoggedInUser);
+            var user = await _userService.FindAsync(LoggedInUser);
+            
+            return Ok(user);
         }
 
         [HttpPost]
