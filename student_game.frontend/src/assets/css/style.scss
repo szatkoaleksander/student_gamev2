@@ -1,19 +1,44 @@
-html, body {
+html,
+body {
     height: 100%;
 }
 
-#app{
+body {
+    background-color: #efefef !important;
+}
+
+a:link,
+a:visited {
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #212529 !important;
+    text-decoration: none !important;
+}
+
+#app {
     height: 100%;
 }
-#main {
+
+.container-fluid,
+.row {
     height: 100%;
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
 }
 
 .container {
-  position: relative;
-  height: 100%;
-  background-color: #F7F7F7;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 auto;
+}
+
+.main-content {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #login-register-div {
@@ -23,12 +48,135 @@ html, body {
     height: 100%;
 }
 
-#nav-tabContent {
-    padding-top: 20px;
+.Navbar {
+    background-color: #202124;
+    padding: 16px;
+    font-family: sans-serif;
+    color: white;
+    vertical-align: middle;
 }
 
+.Navbar-Items {
+    width: 200px;
+    height: 100%;
+}
 
-.dashboard {
-    min-height: 100%;
-    display: block;
+.Nav-btn {
+    display: none;
+}
+
+.Navbar-Link-brand {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Navbar-Link:hover {
+    background-color: #b4b2b2;
+}
+
+.modal-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.671);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-wrapper {
+    background-color: rgb(156, 156, 156);
+    padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .Navbar-Items {
+        display: none;
+        height: auto;
+    }
+
+    .Navbar-ToggleShow {
+        display: block;
+        width: 100%;
+    }
+
+    .Navbar-Link-toggle {
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.699);
+        overflow-y: hidden;
+        transition: 3s;
+    }
+
+    .Nav-btn {
+        margin-left: auto;
+        margin-right: 0;
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        width: 50px;
+        height: 5px;
+        background-color: #ecf0f1;
+        display: block;
+        margin: 8px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger:hover {
+        cursor: pointer;
+    }
+
+    #hamburger.is-active {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    #hamburger.is-active .line:nth-child(2) {
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none;
+    }
+
+    #hamburger .line:nth-child(2) {
+        -webkit-transition-delay: 0.3s;
+        -o-transition-delay: 0.3s;
+        transition-delay: 0.3s;
+    }
+
+
+    #hamburger.is-active .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    #hamburger.is-active .line:nth-child(1),
+    #hamburger.is-active .line:nth-child(3) {
+        width: 35px;
+        -webkit-transform-origin: right;
+        -moz-transform-origin: right;
+        -ms-transform-origin: right;
+        -o-transform-origin: right;
+        transform-origin: right;
+    }
+
+    #hamburger.is-active .line:nth-child(1) {
+        -webkit-transform: translateY(15px) rotate(45deg);
+        -ms-transform: translateY(15px) rotate(45deg);
+        -o-transform: translateY(15px) rotate(45deg);
+        transform: translateY(15px) rotate(45deg);
+    }
+
+    #hamburger.is-active .line:nth-child(3) {
+        -webkit-transform: translateY(-15px) rotate(-45deg);
+        -ms-transform: translateY(-15px) rotate(-45deg);
+        -o-transform: translateY(-15px) rotate(-45deg);
+        transform: translateY(-15px) rotate(-45deg);
+    }
 }
