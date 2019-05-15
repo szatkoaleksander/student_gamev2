@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 namespace student_game.backend.Models
@@ -10,5 +11,11 @@ namespace student_game.backend.Models
         public int Lvl { get; set; } = 0;
         public double Attack { get; set; } = 10;
         public double Defense { get; set; } = 10;
+        public ICollection<Product> Products { get; set; }
+
+        public AppUser()
+        {
+            Products = new List<Product>();
+        }
     }
 }

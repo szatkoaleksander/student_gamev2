@@ -11,16 +11,24 @@ namespace student_game.backend.Models
         public double Defense { get; set; } = 2;
         public Guid DungeonId { get; set; }
         public virtual Dungeon Dungeon { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public Enemy() 
         {
             Id = Guid.NewGuid();
+
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
         }
 
         public Enemy(Guid dungeon) 
         {
             Id = Guid.NewGuid();
             DungeonId = dungeon;
+            
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
         }
     }
 }

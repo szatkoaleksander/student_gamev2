@@ -17,9 +17,9 @@ namespace student_game.backend.Services
         }
         public async Task<IEnumerable<Dungeon>> FindAllAsync()
         {
-            await _appDbContext.Database.EnsureCreatedAsync();
-            _appDbContext.SaveChanges();
-        
+ _appDbContext.Database.EnsureCreated();
+ await _appDbContext.SaveChangesAsync();
+
             return await _appDbContext.Dungeons.Include(x => x.Enemy).ToListAsync();
         }
     }

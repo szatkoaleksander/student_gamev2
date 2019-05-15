@@ -34,6 +34,7 @@ namespace student_game.backend.Services
             {
                 throw new Exception("Invalid credentials");
             }
+        
 
             return await _jwtToken.GenerateJwtToken(email, user);
         }

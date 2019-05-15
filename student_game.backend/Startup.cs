@@ -41,6 +41,7 @@ namespace student_game.backend
             services.AddScoped<ITournamentService, TournamentService>();
             services.AddScoped<IDungeonService, DungeonService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IJwtToken, JwtToken>();
 
             services.AddDbContext<AppDbContext>(options =>

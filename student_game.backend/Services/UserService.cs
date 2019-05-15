@@ -16,7 +16,7 @@ namespace student_game.backend.Services
         }
         public Task<AppUser> FindAsync(string id)
         {
-            return _appDbContext.Users.SingleOrDefaultAsync(x => x.Id == id);
+            return _appDbContext.Users.Include(x => x.Products).SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task LevelUpAsync(AppUser user, int val)
