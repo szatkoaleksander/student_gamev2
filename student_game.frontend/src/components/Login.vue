@@ -53,7 +53,8 @@ export default {
           password: password
         })
         .then(function (response) {
-          // this.$router.push({name: 'Dashboard'})
+          localStorage.setItem('token', response.data);
+          this.$router.push({name: 'Dashboard'})
         })
         .catch(function (error) {
           console.log(error)
