@@ -5,14 +5,6 @@
       <Sidebar />
       <MainContent />
     </div>
-    <script type="application/javascript">
-    function classToggle() {
-      var navs = document.querySelectorAll(".Navbar-Items");
-      navs.forEach(nav => nav.classList.toggle("Navbar-ToggleShow"));
-      document.querySelector(".hamburger").classList.toggle("is-active");
-    }
-    document.querySelector(".Nav-btn").addEventListener("click", classToggle);
-    </script>
   </div>
 </template>
 

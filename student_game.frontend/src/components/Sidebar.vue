@@ -1,11 +1,11 @@
 <template>
-  <nav class="Navbar-Items">
+  <nav class="navbar-Items">
     <div class>
       <h1>Akcje</h1>
     </div>
     <button
       type="button"
-      class="btn btn-info btn-block Navbar-Link"
+      class="btn btn-info btn-block"
       @click="showModal"
     >
       Walka
@@ -13,7 +13,7 @@
 
     <button
       type="button"
-      class="btn btn-info btn-block Navbar-Link"
+      class="btn btn-info btn-block"
       @click="showModal"
     >
       Piwo
@@ -21,7 +21,7 @@
 
     <button
       type="button"
-      class="btn btn-info btn-block Navbar-Link"
+      class="btn btn-info btn-block"
       @click="showModal"
     >
       Sklep

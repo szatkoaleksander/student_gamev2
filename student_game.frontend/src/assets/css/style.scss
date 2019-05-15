@@ -48,7 +48,7 @@ a:active {
     height: 100%;
 }
 
-.Navbar {
+.navbar {
     background-color: #202124;
     padding: 16px;
     font-family: sans-serif;
@@ -56,21 +56,21 @@ a:active {
     vertical-align: middle;
 }
 
-.Navbar-Items {
+.navbar-Items {
     width: 200px;
     height: 100%;
 }
 
-.Nav-btn {
+.nav-btn {
     display: none;
 }
 
-.Navbar-Link-brand {
+.navbar-Link-brand {
     display: inline-block;
     vertical-align: middle;
 }
 
-.Navbar-Link:hover {
+.navbar-Link:hover {
     background-color: #b4b2b2;
 }
 
@@ -93,24 +93,25 @@ a:active {
 }
 
 @media only screen and (max-width: 768px) {
-    .Navbar-Items {
+    .navbar-Items {
         display: none;
         height: auto;
     }
 
-    .Navbar-ToggleShow {
+    .navbar-ToggleShow {
         display: block;
         width: 100%;
+        margin-bottom: 10px;
     }
 
-    .Navbar-Link-toggle {
+    .navbar-Link-toggle {
         z-index: 1;
         background-color: rgba(0, 0, 0, 0.699);
         overflow-y: hidden;
         transition: 3s;
     }
 
-    .Nav-btn {
+    .nav-btn {
         margin-left: auto;
         margin-right: 0;
         display: block;
