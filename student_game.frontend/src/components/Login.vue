@@ -1,30 +1,33 @@
 <template>
-  <div class="login">
+  <div class='login'>
     <form
-      id="login"
-      v-on:submit.prevent="loginForm(email, password)"
+      id='login'
+      v-on:submit.prevent='loginForm(email, password)'
     >
-      <div class="form-group">
-        <label for="email">Adres email</label>
+      <div class='form-group'>
+        <label for='email'>Adres email</label>
         <input
-          type="email"
-          v-model="email"
-          class="form-control"
-          id="email"
-          placeholder="Wpisz email"
+          type='email'
+          v-model='email'
+          class='form-control'
+          id='email'
+          placeholder='Wpisz email'
         >
       </div>
-      <div class="form-group">
-        <label for="password">Hasło</label>
+      <div class='form-group'>
+        <label for='password'>Hasło</label>
         <input
-          type="password"
-          v-model="password"
-          class="form-control"
-          id="password"
-          placeholder="Password"
+          type='password'
+          v-model='password'
+          class='form-control'
+          id='password'
+          placeholder='Password'
         >
       </div>
-      <button type="submit" class="btn btn-primary">Logowanie</button>
+      <button
+        type='submit'
+        class='btn btn-primary'
+      >Logowanie</button>
     </form>
   </div>
 </template>
@@ -33,8 +36,7 @@
 import axios from 'axios'
 export default {
   name: 'Login',
-  props: {
-  },
+  props: {},
 
   data () {
     return {
@@ -44,16 +46,17 @@ export default {
   },
   methods: {
     loginForm: function (email, password) {
-      this.$router.push({name: 'Dashboard'})
-      axios.post('http://localhost:5000/api/account/login', {
-        email: email,
-        password: password
-      })
+      this.$router.push({ name: 'Dashboard' })
+      axios
+        .post('http://localhost:5000/api/account/login', {
+          email: email,
+          password: password
+        })
         .then(function (response) {
-          //this.$router.push({name: 'Dashboard'})
+          localStorage.setItem('token', response.data);
+          this.$router.push({name: 'Dashboard'})
         })
         .catch(function (error) {
-          
           console.log(error)
         })
     }
@@ -61,7 +64,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
+<style scoped lang='scss'>
 </style>

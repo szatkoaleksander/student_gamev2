@@ -38,42 +38,31 @@ namespace student_game.backend.Database
             var d4 = new Dungeon(4);
             var d5 = new Dungeon(5);
 
-           // modelBuilder.Entity<Dungeon>().HasData(d1, d2, d3, d4, d5);
-            modelBuilder.Entity<Dungeon>().HasData(d2);
-            modelBuilder.Entity<Dungeon>().HasData(d3);
-            modelBuilder.Entity<Dungeon>().HasData(d4);
-            modelBuilder.Entity<Dungeon>().HasData(d5);
-
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d1.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d1.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d1.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d1.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d1.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d2.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d2.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d2.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d2.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d2.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d3.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d3.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d3.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d3.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d3.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d4.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d4.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d4.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d4.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d4.Id});
-            // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d5.Id});
-            // // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d5.Id});
-            // // modelBuilder.Entity<Enemy>().HasData(new Enemy() { DungeonId = d5.Id});
-
-            // modelBuilder.Entity<Product>().HasData(new Product("Lawka", 100, "ALA MA KOTA"));
-            // modelBuilder.Entity<Product>().HasData(new Product("Lawka1", 1200, "ALA MA KOTA"));
-            // modelBuilder.Entity<Product>().HasData(new Product("Lawka1", 3100, "ALA MA KOTA"));
-            // modelBuilder.Entity<Product>().HasData(new Product("Lawka1", 5100, "ALA MA KOTA"));
-            // modelBuilder.Entity<Product>().HasData(new Product("Lawka1", 99100, "ALA MA KOTA"));
-        
+            modelBuilder.Entity<Dungeon>().HasData(d1, d2, d3, d4, d5);
+            modelBuilder.Entity<Enemy>().HasData(
+                new Enemy() { DungeonId = d1.Id },
+                new Enemy() { DungeonId = d1.Id },
+                new Enemy() { DungeonId = d1.Id },
+                new Enemy() { DungeonId = d2.Id },
+                new Enemy() { DungeonId = d2.Id },
+                new Enemy() { DungeonId = d2.Id },
+                new Enemy() { DungeonId = d2.Id },
+                new Enemy() { DungeonId = d3.Id },
+                new Enemy() { DungeonId = d3.Id },
+                new Enemy() { DungeonId = d3.Id },
+                new Enemy() { DungeonId = d3.Id },
+                new Enemy() { DungeonId = d3.Id },
+                new Enemy() { DungeonId = d4.Id },
+                new Enemy() { DungeonId = d4.Id },
+                new Enemy() { DungeonId = d4.Id },
+                new Enemy() { DungeonId = d4.Id },
+                new Enemy() { DungeonId = d4.Id },
+                new Enemy() { DungeonId = d5.Id },
+                new Enemy() { DungeonId = d5.Id },
+                new Enemy() { DungeonId = d5.Id },
+                new Enemy() { DungeonId = d5.Id },
+                new Enemy() { DungeonId = d5.Id }
+            );
         }
     }
 }
