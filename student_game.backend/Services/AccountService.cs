@@ -23,6 +23,8 @@ namespace student_game.backend.Services
             _jwtToken = jwtToken;
             _userManager = userManager;
             _signInManager = signInManager;
+
+            _appDbContext.Database.EnsureCreated();
         }
 
         public async Task<string> Login(string email, string password)
