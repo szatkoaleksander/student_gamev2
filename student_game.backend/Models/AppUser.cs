@@ -11,11 +11,11 @@ namespace student_game.backend.Models
         public int Lvl { get; set; } = 0;
         public double Attack { get; set; } = 10;
         public double Defense { get; set; } = 10;
-        public ICollection<Product> Products { get; set; }
+        public ICollection<AppUserProduct> AppUserProduct { get; set; }
 
         public AppUser()
         {
-            Products = new List<Product>();
+            AppUserProduct = new List<AppUserProduct>();
         }
     }
 }
