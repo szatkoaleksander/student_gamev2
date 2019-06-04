@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using student_game.backend.Database;
 using student_game.backend.Models;
 
@@ -18,7 +19,9 @@ namespace student_game.backend.Services
         }
         public async Task<int> BattleWithBot(int dungeon, int enemy, string userId)
         {
-            var user = _appDbContext.Users.SingleOrDefault(x => x.Id == userId);
+            var user = await _appDbContext.Users.SingleOrDefaultAsync(x => x.Id == userId);
+            user.Attack = (await _userService.GetProductByUser(userId)).Sum(x => x.Bonus);
+            
             var en = new Enemy();
             en.Attack += dungeon * enemy * 10;
             en.Defense += dungeon * enemy * 5;
@@ -30,7 +33,7 @@ namespace student_game.backend.Services
                 user.Exp += 100;
                 user.Money += 100;
 
-                await _userService.LevelUpAsync(user, 1);
+                await _userService.LevelUpAsync(user);
 
                 return result;
             }
@@ -55,6 +58,18 @@ namespace student_game.backend.Services
 
                 var userAttack = user.Attack - (defenseEnemy / 2);
                 var enemyAttack = en.Attack - (defenseUser / 2);
+
+                if(defenseUser < 0)
+                    defenseUser = 0;
+                if(userAttack < 0)
+                    userAttack = 0;
+                if(defenseEnemy < 0)
+                    defenseEnemy = 0;
+                if(enemyAttack < 0)
+                    enemyAttack = 0;
+
+                //throw new Exception($"{enemyAttack} - {defenseEnemy} ||| {userAttack} - {defenseUser}");
+
 
                 if(userAttack >= enemyAttack)
                 {
