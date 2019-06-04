@@ -20,7 +20,7 @@ namespace student_game.backend.Services
             return await _appDbContext.Users.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IEnumerable<Product>> GetProductByUser(string userId)
+        public async Task<List<Product>> GetProductByUser(string userId)
         {
             var user = await _appDbContext.Users.Include(x => x.AppUserProduct).SingleOrDefaultAsync(x => x.Id == userId);
             var product = new List<Product>();
@@ -34,7 +34,7 @@ namespace student_game.backend.Services
             return product;
         }
 
-        public async Task LevelUpAsync(AppUser user, int val)
+        public async Task LevelUpAsync(AppUser user)
         {
             var exp = user.Exp;
 
