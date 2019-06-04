@@ -35,10 +35,6 @@ namespace student_game.backend.Database
                 .WithMany(x => x.AppUserProduct)
                 .HasForeignKey(x => x.ProductId);
 
-            /* TODO 
-            * Remove seeds in future
-            *
-            */
             var d1 = new Dungeon(1);
             var d2 = new Dungeon(2);
             var d3 = new Dungeon(3);
@@ -75,13 +71,13 @@ namespace student_game.backend.Database
             );
 
             modelBuilder.Entity<Product>().HasData(
-                new Product("test", 100, "tes_testsetset"),
-                new Product("test1", 100, "tes_testsetset1"),
-                new Product("test2", 100, "tes_testsetset2"),
-                new Product("test3", 100, "tes_testsetset3"),
-                new Product("test4", 100, "tes_testsetset4"),
-                new Product("test5", 100, "tes_testsetset5"),
-                new Product("test6", 100, "tes_testsetset6")
+                new Product("Piwo", 100, "Piweczko jest jak rosol", 1),
+                new Product("Kilo kurczaka", 500, "Bialeczko", 2),
+                new Product("Ubrania", 1500, "Bo student ubrany byc musi", 3),
+                new Product("Mydelko Fa", 5000, "Ty i ja, ty i ja", 4),
+                new Product("Drukarka", 10000, "Bo edukacja jest darmowa", 5),
+                new Product("Dziewczyna", 20000, "...", 6),
+                new Product("Kawalerka", 30000, "Oaza spokoju", 7)
             );
         }
     }
