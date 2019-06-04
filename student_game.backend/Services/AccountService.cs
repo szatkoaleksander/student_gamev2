@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using student_game.backend.Database;
 using student_game.backend.Models;
 using student_game.backend.Security;
+using student_game.backend.ViewModels;
 
 namespace student_game.backend.Services
 {
@@ -27,7 +28,7 @@ namespace student_game.backend.Services
             _appDbContext.Database.EnsureCreated();
         }
 
-        public async Task<string> Login(string email, string password)
+        public async Task<JwtViewModel> Login(string email, string password)
         {
             var user = _userManager.Users.SingleOrDefault(x => x.Email == email);
             var result = await _signInManager.PasswordSignInAsync(user.UserName, password, isPersistent: false, lockoutOnFailure: false);
@@ -36,6 +37,7 @@ namespace student_game.backend.Services
             {
                 throw new Exception("Invalid credentials");
             }
+        
 
             return await _jwtToken.GenerateJwtToken(email, user);
         }

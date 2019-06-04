@@ -20,7 +20,7 @@ namespace student_game.backend.Security
             _configuration = configuration;
         }
 
-        public async Task<string> GenerateJwtToken(string email, IdentityUser user)
+        public async Task<JwtViewModel> GenerateJwtToken(string email, IdentityUser user)
         {
             var claims = new List<Claim>
             {
@@ -40,8 +40,11 @@ namespace student_game.backend.Security
                 expires: expires,
                 signingCredentials: creds
             );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            
+            return new JwtViewModel 
+            {
+                Token = new JwtSecurityTokenHandler().WriteToken(token)
+            };
         }
     }
 }

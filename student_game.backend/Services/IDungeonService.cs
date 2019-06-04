@@ -6,6 +6,6 @@ namespace student_game.backend.Services
 {
     public interface IDungeonService
     {
-         Task<IEnumerable<Dungeon>> FindAllAsync();
+        Task<IEnumerable<Dungeon>> FindAllAsync();
     }
 }
