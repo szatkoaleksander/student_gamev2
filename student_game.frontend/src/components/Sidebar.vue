@@ -24,17 +24,12 @@
       style="font-size:24px"
     ></i>
 
-    <Modal
-      v-show="isModalVisible"
-      @close="closeModal"
-    />
+    
   </nav>
 
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
-
 export default {
   name: 'sidebar',
 
