@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Main from './views/Main.vue'
+import Dashboard from './views/Dashboard.vue'
 import Home from './views/Home.vue'
+import Fightboard from './views/Fightboard.vue'
+import Shopboard from './views/Shopboard.vue'
 
 Vue.use(Router)
 
@@ -10,16 +14,30 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'Main',
+      component: Main
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      children: [
+        {
+          path: '/home',
+          name: 'Home',
+          component: Home
+        },
+        {
+          path: '/fightboard',
+          name: 'Fight',
+          component: Fightboard
+        },
+        {
+          path: '/shopboard',
+          name: 'Shopboard',
+          component: Shopboard
+        }
+      ]
     }
   ]
 })
