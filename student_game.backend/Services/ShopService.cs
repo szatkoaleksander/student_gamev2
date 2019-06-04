@@ -34,12 +34,24 @@ namespace student_game.backend.Services
             {
                 throw new Exception("null product shopservice");
             }
+            if(user.Money < product.Price)
+            {
+                throw new Exception("not enought money");
+            }
 
-            user.Products.Add(product);
+            user.Money -= product.Price;
 
-            //throw new Exception(user.Products.Count.ToString());
+            var aup = new AppUserProduct();
+            aup.AppUser = user;
+            aup.AppUserId = user.Id;
+            aup.Product = product;
+            aup.ProductId = product.Id;
+
+            user.AppUserProduct.Add(aup);
+            product.AppUserProduct.Add(aup);
 
             _appDbContext.Users.Update(user);
+            _appDbContext.Products.Update(product);
             await _appDbContext.SaveChangesAsync();
         }
     }

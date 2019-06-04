@@ -10,10 +10,12 @@ namespace student_game.backend.Controllers
     public class ShopController : BaseController
     {
         private readonly IShopService _shopService;
+        private readonly IUserService _userService;
 
-        public ShopController(IShopService shopService)
+        public ShopController(IShopService shopService, IUserService userService)
         {
             _shopService = shopService;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -25,6 +27,18 @@ namespace student_game.backend.Controllers
 
             return Json(result);
         }
+
+        [HttpGet]
+        [Authorize]
+        [Route("[action]")]
+        public async Task<IActionResult> GetUserProduct()
+        {
+            var result = await _userService.GetProductByUser(LoggedInUser);
+
+            return Json(result);
+        }
+
+
 
         [HttpPost]
         [Authorize]
