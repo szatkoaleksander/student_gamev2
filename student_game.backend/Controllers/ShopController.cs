@@ -47,7 +47,7 @@ namespace student_game.backend.Controllers
         {
             await _shopService.BuyProductAsync(command.ProductId, LoggedInUser);
 
-            return Ok();
+            return Json(1);
         }
     }
 }
