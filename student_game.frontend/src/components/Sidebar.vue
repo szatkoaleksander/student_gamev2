@@ -3,8 +3,6 @@
     <div class>
       <h1>Akcje</h1>
     </div>
-
-
         <router-link
       class="btn btn-info btn-block"
       to="home"
@@ -17,16 +15,7 @@
       class="btn btn-info btn-block"
       to="shopboard"
     >Shop</router-link>
-
-
-    <i
-      class="fa fa-gear fa-spin"
-      style="font-size:24px"
-    ></i>
-
-    
   </nav>
-
 </template>
 
 <script>

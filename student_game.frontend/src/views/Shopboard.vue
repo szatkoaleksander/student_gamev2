@@ -3,7 +3,7 @@
     <h1>Shop</h1>
     <h2>Pozostałe pieniądze: {{ money }}</h2>
     <div id="accordion">
-      <div class="card" v-for='item in shop'>
+      <div class="card" v-for='item in shop' :key='item.id'>
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
             <button class="btn btn-link" data-toggle="collapse" :data-target="'#collapse'+item.id" aria-expanded="true" v-bind:aria-controls="item.id">
@@ -23,13 +23,12 @@
     </div>
     <div id="inventory" style="margin-top: 40px;">
       <h1>Inventory</h1>
-      <div class="enemy" v-for='item in inventory'>
+      <div class="enemy" v-for='item in inventory' :key="item.id">
         {{item.name}}
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import axios from 'axios'
@@ -53,36 +52,36 @@ export default {
     this.getInventory()
   },
   methods: {
-    getInventory: function (){
+    getInventory: function () {
       axios
-      .get('http://localhost:5000/api/shop/getuserproduct', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
-      .then(response => {
-        this.inventory = response.data
-        console.log(response)
-      })
-      .catch(error => console.log(error))
+        .get('http://localhost:5000/api/shop/getuserproduct', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+        .then(response => {
+          this.inventory = response.data
+          console.log(response)
+        })
+        .catch(error => console.log(error))
     },
-    getMoney: function() {
+    getMoney: function () {
       axios
-      .get('http://localhost:5000/api/account/me', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
-      .then(response => {
-        this.money = response.data.money
-      })
-      .catch(error => console.log(error))
+        .get('http://localhost:5000/api/account/me', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+        .then(response => {
+          this.money = response.data.money
+        })
+        .catch(error => console.log(error))
     },
     buyItem: function (productID) {
       axios
         .post('http://localhost:5000/api/shop/buy', {
-            productId: productID
-          },
-          {
+          productId: productID
+        },
+        {
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
           }
+        }
         )
         .then((response) => {
-          alert("Kupiono")
+          alert('Kupiono')
           this.getMoney()
           this.getInventory()
         })
@@ -93,4 +92,3 @@ export default {
   }
 }
 </script>
-

@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <Navbar />
     <div class="row">
-      <div class="col-2">
         <Sidebar></Sidebar>
-      </div>
       <div class="col">
         <router-view></router-view>
       </div>

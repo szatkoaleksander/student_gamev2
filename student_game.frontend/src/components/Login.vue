@@ -52,9 +52,8 @@ export default {
           password: password
         })
         .then((response) => {
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('token', response.data.token)
           this.$router.push({ name: 'Dashboard' })
-
         })
         .catch(function (error) {
           console.log(error)
