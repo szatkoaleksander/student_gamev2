@@ -19,7 +19,7 @@
         <div :id="'collapse' + enemies.level" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
             <div class="row">
-              <div class="col enemie" v-for='(enemy, enemyNumber) in enemies.enemy'>
+              <div class="col enemy" v-for='(enemy, enemyNumber) in enemies.enemy'>
                   <h3>HP: {{enemy.hp}}</h3>
                   <h3>Atak: {{enemy.attack}}</h3>
                   <h3>Obrona: {{enemy.defense}}</h3>

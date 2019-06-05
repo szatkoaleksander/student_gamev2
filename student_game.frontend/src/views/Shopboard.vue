@@ -21,6 +21,12 @@
         </div>
       </div>
     </div>
+    <div id="inventory" style="margin-top: 40px;">
+      <h1>Inventory</h1>
+      <div class="enemy" v-for='item in inventory'>
+        {{item.name}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,6 +39,7 @@ export default {
       token: localStorage.getItem('token'),
       money: 0,
       shop: null,
+      inventory: null
     }
   },
   mounted () {
@@ -43,8 +50,18 @@ export default {
       })
       .catch(error => console.log(error))
     this.getMoney()
+    this.getInventory()
   },
   methods: {
+    getInventory: function (){
+      axios
+      .get('http://localhost:5000/api/shop/getuserproduct', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+      .then(response => {
+        this.inventory = response.data
+        console.log(response)
+      })
+      .catch(error => console.log(error))
+    },
     getMoney: function() {
       axios
       .get('http://localhost:5000/api/account/me', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
@@ -67,6 +84,7 @@ export default {
         .then((response) => {
           alert("Kupiono")
           this.getMoney()
+          this.getInventory()
         })
         .catch(function (error) {
           console.log(error)
