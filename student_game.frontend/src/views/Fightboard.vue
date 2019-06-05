@@ -1,8 +1,13 @@
 <template>
   <div class="col main-content">
     <h1>FB</h1>
+    <div>
+      <div v-for="(statistics, value) in user">
+        {{ value }}: {{statistics}}
+      </div>
+    </div>
     <div id="accordion">
-      <div class="card" v-for='enemies in orderedFight'>
+      <div class="card" v-for='(enemies, dungeonNumber) in orderedFight'>
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
             <button class="btn btn-link" data-toggle="collapse" :data-target="'#collapse'+enemies.level" aria-expanded="true" v-bind:aria-controls="enemies.level">
@@ -14,11 +19,11 @@
         <div :id="'collapse' + enemies.level" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
             <div class="row">
-              <div class="col enemie" v-for='enemi in enemies.enemy'>
-                  <h3>HP: {{enemi.hp}}</h3>
-                  <h3>Atak: {{enemi.attack}}</h3>
-                  <h3>Obrona: {{enemi.defense}}</h3>
-                  <button type="button" class="btn btn-dark" v-on:click="fightMethod('1', '1')">Walcz!</button>
+              <div class="col enemie" v-for='(enemy, enemyNumber) in enemies.enemy'>
+                  <h3>HP: {{enemy.hp}}</h3>
+                  <h3>Atak: {{enemy.attack}}</h3>
+                  <h3>Obrona: {{enemy.defense}}</h3>
+                  <button type="button" class="btn btn-dark" v-on:click="fightMethod(enemyNumber, dungeonNumber)">Fight!</button>
               </div>
             </div>
           </div>
@@ -37,19 +42,25 @@ export default {
     return {
       fight: 'a',
       token: localStorage.getItem('token'),
-      enemiID: null,
-      dungeonID: null,
       isModalVisible: false,
+      user: {
+        Exp: 0,
+        HP: 0,
+        LVL: 0,
+        Defense: 0,
+        Attack: 0
+      }
     }
   },
   mounted () {
     axios
       .get('http://localhost:5000/api/dungeon/getdungeon', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
       .then(response => {
-        this.fight = response.data;
-
+          this.fight = response.data;
       })
       .catch(error => console.log(error))
+    this.getUserData()
+
   },
   computed: {
     orderedFight: function () {
@@ -57,11 +68,24 @@ export default {
     }
   },
   methods: {
-    fightMethod: function (enemiID, dungeonID) {
+    getUserData: function(){
+      axios
+        .get('http://localhost:5000/api/account/me', { headers: { Authorization: 'Bearer ' + localStorage.getItem('token') } })
+        .then(response => {
+          this.user.Exp = response.data.exp
+          this.user.HP = response.data.hp
+          this.user.LVL = response.data.lvl
+          this.user.Defense = response.data.defense
+          this.user.Attack = response.data.attack
+        })
+        .catch(error => console.log(error))
+    },
+    fightMethod: function (enemyNumber, dungeonNumber) {
+      console.log(enemyNumber+ " " +dungeonNumber)
       axios
         .post('http://localhost:5000/api/tournament/battlewithbot', {
-            'Dungeon': dungeonID,
-            'Enemy': enemiID,
+            dungeon: dungeonNumber,
+            enemy: enemyNumber,
           },
           {
           headers: {
@@ -70,6 +94,7 @@ export default {
           }
         )
         .then((response) => {
+          this.getUserData()
           console.log(response)
           if(response.data==1){
             alert("Wygranko")
